@@ -31,7 +31,9 @@ class RootPage extends Component {
 
   componentDidMount() {
     const { componentItems } = this.props;
-    if (!this.state.activeNavItemId && componentItems) {
+    const { activeNavItemId } = this.state;
+
+    if (!activeNavItemId && componentItems) {
       const pathnameTokens = /^\/demo\/([\w-]+)$/.exec(window.location.pathname);
       const name = (pathnameTokens && pathnameTokens[1]) || '';
       const selectedNavItem = (name && componentItems.find(item => item.name === name)) || componentItems[0];
@@ -57,7 +59,9 @@ class RootPage extends Component {
    */
   getCurrentComponentItem() {
     const { componentItems } = this.props;
-    return componentItems && componentItems.find(item => item.id === this.state.activeNavItemId);
+    const { activeNavItemId } = this.state;
+
+    return componentItems && componentItems.find(item => item.id === activeNavItemId);
   }
 
   /**
@@ -77,11 +81,12 @@ class RootPage extends Component {
 
   render() {
     const { componentItems } = this.props;
+    const { activeNavItemId } = this.state;
     const metadata = this.getCurrentComponentItem();
     const { name, label } = metadata || {};
     return !metadata ? null : (
       <Fragment>
-        <SideNav items={componentItems} activeItemId={this.state.activeNavItemId} onItemClick={this.onSideNavItemClick} />
+        <SideNav items={componentItems} activeItemId={activeNavItemId} onItemClick={this.onSideNavItemClick} />
         <main role="main" id="maincontent" className="container" aria-labelledby="page-title" tabIndex="-1" data-page={name}>
           <PageHeader label="Component" title={label} />
           <CodePage metadata={metadata} />

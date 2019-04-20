@@ -80,7 +80,7 @@ td {
   }
 
   & > *:not(.component-example):not(.component-variation),
-  & >  {
+  & > {
     .page__divider-heading {
       @include typescale('zeta');
       font-weight: 600;

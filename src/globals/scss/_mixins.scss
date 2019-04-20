@@ -15,7 +15,7 @@
 $breakpoints: (
   bp--xs--major: 600px,
   bp--sm--major: 840px,
-  bp--md--major: 1024px
+  bp--md--major: 1024px,
 );
 
 @mixin breakpoint($size) {

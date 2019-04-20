@@ -7,6 +7,7 @@
   "scripts": {
     "build": "node scripts/build.js",
     "ci-check": "yarn prettier:diff && yarn lint",
+    "lint": "eslint src .storybook",
     "prettier:diff": "prettier --list-different \"**/*.{scss,css,js}\"",
     "semantic-release": "semantic-release",
     "storybook": "start-storybook -p 9000",

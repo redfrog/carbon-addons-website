@@ -23,9 +23,11 @@ class SideNavToggle extends Component {
    */
   toggle = () => {
     const { onChange } = this.props;
-    this.setState({ closed: !this.state.closed }, () => {
+    const { closed } = this.state;
+
+    this.setState({ closed: !closed }, () => {
       if (onChange) {
-        onChange({ closed: this.state.closed });
+        onChange({ closed });
       }
     });
   };
@@ -37,7 +39,7 @@ class SideNavToggle extends Component {
     });
 
     return (
-      <button aria-label="Toggle Side Navigation" className={classNames} onClick={this.toggle}>
+      <button type="button" aria-label="Toggle Side Navigation" className={classNames} onClick={this.toggle}>
         <div>
           <span className="line" />
           <span className="line" />
